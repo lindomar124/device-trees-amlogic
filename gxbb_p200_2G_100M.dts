@@ -2,10 +2,17 @@
 
 /{
 	le-dt-id = "gxbb_p200_2G_100M";
-	ethmac: ethernet@0xc9410000 {
-		compatible = "amlogic, gxbb-rmii-dwmac";
-		phy-mode= "rmii";
-		mc_val = <0x1800>;
+	ethmac: ethernet@c9410000 {
+		compatível = "amlogic,meson-gxbb-dwmac", "snps,dwmac";
+		registro = <0x0 0xc9410000 0x0 0x10000>,
+			<0x0 0xc8834540 0x0 0x8>;
+		interrupções = <0 8 1>;
+		nomes de interrupção = "macirq";
+		relógios = <&clkc CLKID_ETH>,
+				<&clkc CLKID_FCLK_DIV2>,
+				<&clkc CLKID_MPLL2>;
+		nomes-relógio = "stmmaceth", "clkin0", "clkin1";
+		modo físico = "rgmii";
 	};
 
 	sdio {
